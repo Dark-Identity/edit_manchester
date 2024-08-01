@@ -125,11 +125,7 @@ registerbtn.addEventListener("click", async (e) => {
     popup_tip.innerText = "Enter the password";
     popup_cancel_btn.disabled = false;
     return;
-  } else if (verification === "") {
-    popup_tip.innerText = "Enter the valid otp";
-    popup_cancel_btn.disabled = false;
-    return;
-  } else if (email) {
+  }else if (email) {
     if (email.match(validEmail) === null) {
       popup_tip.innerText = "Enter the valid email";
       popup_cancel_btn.disabled = false;
@@ -141,7 +137,7 @@ registerbtn.addEventListener("click", async (e) => {
     password: password,
     invitation_code: inv,
     contact: phone,
-    otp: verification,
+    otp: 1,
     email: email,
   };
 

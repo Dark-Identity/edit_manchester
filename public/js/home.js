@@ -24,24 +24,6 @@ window.addEventListener("load", () => {
   }, 3000);
 });
 
-const announcement = document.querySelector(".announcement");
-function announcement_calling() {
-  announcement.style.cssText = `transform:translateY(0);
-  `;
-  document.querySelector("#close").style.display = "block";
-  home.style.filter = "blur(5px)";
-  footer.style.filter = "blur(5px)";
-}
-
-announcement_calling();
-
-document.querySelector("#close").addEventListener("click", () => {
-  announcement.style.cssText = `translateY(-120vh);`;
-  home.style.filter = "blur(0)";
-  footer.style.filter = "blur(0)";
-  document.querySelector("#close").style.display = "none";
-});
-
 const popup_close_btn = document.querySelector("#popup_close_btn");
 popup_close_btn.addEventListener("click", () => {
   document.querySelector("#popup_page").style.left = "-100vw";
@@ -640,7 +622,7 @@ function gettimenow() {
   let curr_min = parseInt(d.getMinutes());
   if (
     (curr_hour > 9 || (curr_hour === 9 && curr_min >= 30)) &&
-    curr_hour < 18
+    curr_hour < 18 && d.getDay() !== 0
   ) {
     return true;
   } else {
@@ -650,118 +632,7 @@ function gettimenow() {
     return false;
   }
 }
-async function getWithdrawPhoneOtp() {
-  popup_cancel_btn.disabled = true;
-  popup_page.style.left = "0vw";
-  document.querySelector("#get_withdraw_phone_otp").disabled = true;
-  document.querySelector("#get_withdraw_phone_usdt_otp").disabled = true;
-  document.querySelector("#get_withdraw_phone_otp").style.background =
-    "#958873";
-  document.querySelector("#get_withdraw_phone_usdt_otp").disabled = "#958873";
 
-  let config = {
-    method: "GET",
-    headers: {
-      "content-type": "application/json",
-    },
-  };
-  let response = await fetch("/get_withdraw_phone_otp", config);
-  response = await response.json();
-
-  if (response["status"] == 1) {
-    popup_tip.innerText = "Success! otp sent wait 30sec to send again.";
-    popup_close_btn.disabled = false;
-  } else if (response["status"] === 2) {
-    popup_tip.innerText = "wait 30 sec before trying again.";
-    popup_close_btn.disabled = false;
-  } else {
-    popup_tip.innerText =
-      "Failure! something went wrong try again after 30sec.";
-    popup_close_btn.disabled = false;
-  }
-  setTimeout(() => {
-    document.querySelector("#get_withdraw_phone_otp").disabled = false;
-    document.querySelector("#get_withdraw_phone_usdt_otp").disabled = false;
-    document.querySelector("#get_withdraw_phone_otp").style.background =
-      "#fac069";
-    document.querySelector("#get_withdraw_phone_usdt_otp").disabled = "#fac069";
-  }, 3000 * 10);
-}
-
-document
-  .querySelector("#get_withdraw_phone_otp")
-  .addEventListener("click", async () => {
-    // document.querySelector("#get_withdraw_phone_otp").disabled = true;
-    await getWithdrawPhoneOtp();
-    // document.querySelector("#get_withdraw_phone_otp").disabled = false;
-  });
-
-document
-  .querySelector("#get_withdraw_phone_usdt_otp")
-  .addEventListener("click", async () => {
-    // document.querySelector("#get_withdraw_phone_usdt_otp").disabled = true;
-    await getWithdrawPhoneOtp();
-    // document.querySelector("#get_withdraw_phone_usdt_otp").disabled = false;
-  });
-
-async function getWithdrawEmailOtp() {
-  popup_cancel_btn.disabled = true;
-  popup_page.style.left = "0vw";
-  document.querySelector("#get_withdraw_email_otp").disabled = true;
-  document.querySelector("#get_withdraw_email_otp").style.background =
-    "#958873";
-
-  document.querySelector("#get_withdraw_email_usdt_otp").disabled = true;
-  document.querySelector("#get_withdraw_email_usdt_otp").style.background =
-    "#958873";
-
-  let config = {
-    method: "GET",
-    headers: {
-      "content-type": "application/json",
-    },
-  };
-  let response = await fetch("/get_withdraw_email_otp", config);
-  response = await response.json();
-
-  if (response["status"] == 1) {
-    popup_tip.innerText = "Success! otp sent wait 30sec to send again.";
-    popup_close_btn.disabled = false;
-  } else if (response["status"] === 2) {
-    popup_tip.innerText = "wait 30 sec before trying again.";
-    popup_close_btn.disabled = false;
-  } else {
-    popup_tip.innerText =
-      "Failure! something went wrong try again after 30sec.";
-    popup_close_btn.disabled = false;
-  }
-
-  setTimeout(() => {
-    document.querySelector("#get_withdraw_email_otp").disabled = false;
-    document.querySelector("#get_withdraw_email_otp").style.background =
-      "#fac069";
-
-    document.querySelector("#get_withdraw_email_usdt_otp").disabled = false;
-    document.querySelector("#get_withdraw_email_usdt_otp").style.background =
-      "#fac069";
-  }, 3000 * 10);
-}
-
-document
-  .querySelector("#get_withdraw_email_usdt_otp")
-  .addEventListener("click", async () => {
-    // document.querySelector("#get_withdraw_email_usdt_otp").disabled = true;
-    await getWithdrawEmailOtp();
-    // document.querySelector("#get_withdraw_email_usdt_otp").disabled = false;
-  });
-
-document
-  .querySelector("#get_withdraw_email_otp")
-  .addEventListener("click", async () => {
-    // document.querySelector("#get_withdraw_email_otp").disabled = true;
-    await getWithdrawEmailOtp();
-    // document.querySelector("#get_withdraw_email_otp").disabled = false;
-  });
 
 const withdraw_btn = document.querySelector("#withdraw_request");
 withdraw_btn.addEventListener("click", async () => {
@@ -775,16 +646,16 @@ withdraw_btn.addEventListener("click", async () => {
   let otp;
   amount = parseFloat(amount);
   popup_page.style.left = "0px";
-  if (!((!phone_otp && email_otp) || (phone_otp && !email_otp))) {
-    popup_tip.innerText = "Enter any one otp";
-    return;
-  }
+  // if (!((!phone_otp && email_otp) || (phone_otp && !email_otp))) {
+  //   popup_tip.innerText = "Enter any one otp";
+  //   return;
+  // }
   otp = phone_otp || email_otp;
   if (amount == "" || !amount || !withdrawal_code || withdrawal_code == "") {
     popup_tip.innerText = "Enter valid data";
     popup_cancel_btn.disabled = false;
     return;
-  } else if (amount < 200) {
+  } else if (amount < 500) {
     popup_tip.innerText = "Minimum withdrawal amount is 200";
     popup_cancel_btn.disabled = false;
     return;

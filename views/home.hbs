@@ -82,9 +82,9 @@
                         <div class="swiper-slide">
                             <img src="/elephantFootball/homePage/homeC3.jpg" alt="" srcset="" />
                         </div>
-                        <div class="swiper-slide">
+                        {{!-- <div class="swiper-slide">
                             <img src="/elephantFootball/homePage/homeC4.jpg" alt="" srcset="" />
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -1361,7 +1361,7 @@
                         style="background: linear-gradient(180deg, #5bb2ecd1, #3d8af8);color: #fff;">
                         <p>INR</p>
                     </span>
-                    <span class="usdt_w_btn usdt_btnn">
+                    <span style="display : none" class="usdt_w_btn usdt_btnn">
                         <p>USDT</p>
                     </span>
                 </div>
@@ -1438,22 +1438,22 @@
                             <div class="gap">
 
                                 <div class="pass_gap">
-                                    <h4 style="color: grey;">Two-Factor Authentication (2FA),Choose anyone</h4>
+                                    {{!-- <h4 style="color: grey;">Two-Factor Authentication (2FA),Choose anyone</h4> --}}
                                     <div class="pI addAccount"
                                         style="display: flex;justify-content: space-between;align-items: center;margin:2vw 0  0 0;height:6.4vh;background: #f9f9f9;width: 92vw;margin-left: 6px; border-radius: 5px;">
-                                        <input id="withdraw_phone_otp_input" type="number"
+                                        {{!-- <input id="withdraw_phone_otp_input" type="number"
                                             placeholder="Phone Verification"
-                                            style=" margin-left:2vw;width:100%;outline:none;border:none;background: transparent;">
+                                            style=" margin-left:2vw;width:100%;outline:none;border:none;background: transparent;"> --}}
                                     </div>
 
                                     <div class="password_verify_btn">
                                         {{!-- <button style="background:#7cd0e2;" id="reset_password_verify_btn">
                                             <p style="">Verify OTP</p>
                                         </button> --}}
-                                        <button id="get_withdraw_phone_otp" style="background:#fac069;"
+                                        {{!-- <button id="get_withdraw_phone_otp" style="background:#fac069;"
                                             id="reset_password_send_otp_btn">
                                             <p style="">Resend OTP</p>
-                                        </button>
+                                        </button> --}}
                                     </div>
 
 
@@ -1463,18 +1463,18 @@
                                 <div class="pass_gap">
                                     <div class="pI addAccount "
                                         style="display: flex;justify-content: space-between;align-items: center;margin:2vw 0  0 0;height:6.4vh;background: #f9f9f9;width: 92vw;margin-left: 6px; border-radius: 5px;">
-                                        <input id="withdraw_email_otp_input" type="number"
+                                        {{!-- <input id="withdraw_email_otp_input" type="number"
                                             placeholder="Email Verification"
-                                            style=" margin-left:2vw;width:100%;outline:none;border:none;background: transparent;padding: .5rem;">
+                                            style=" margin-left:2vw;width:100%;outline:none;border:none;background: transparent;padding: .5rem;"> --}}
                                     </div>
 
                                     <div class="password_verify_btn">
                                         {{!-- <button style="background:#7cd0e2;">
                                             <p style="">Verify OTP</p>
                                         </button> --}}
-                                        <button id="get_withdraw_email_otp" style="background:#fac069;">
+                                        {{!-- <button id="get_withdraw_email_otp" style="background:#fac069;">
                                             <p style="">Resend OTP</p>
-                                        </button>
+                                        </button> --}}
                                     </div>
 
 
@@ -1498,15 +1498,22 @@
                             <p data-v-5597067f="">Tips:</p>
                         </div>
                         <p class="texttips" data-v-4a614c8c="" style="padding: 2vw;font-weight:700">
-                            1. Withdraw from 9:30-18:00 every day. <br>
-                            2. Minimum withdrawal amount Rs.200, Maximum withdrawal amount 50000. <br>
-                            3. 10% handling fee. <br>
-                            4. Valid betting amount must be 2 times of the recharged account amount before cash can be
-                            withdrawn experience coupon betting are not counted, and balance betting breakeven all score
-                            is calculated at 40%. <br>
-                            5.Strict policy: Self-betting is prohibited. Engaging in self-betting will result in the
-                            loss of your wagered amount.<br>
-                            6. If you have any questions, please contact our customer service staff to help you.
+                            1. Each placed stake boosts 20% of the wagered amount.
+     Complete five stakes before withdrawal. Ensure proper
+      wagering before proceeding with withdrawal to meet
+      requirements. <br>
+                            2. During the specified time frame of 11:00 to 16:00,
+      withdrawals will be processed. Please note that
+      the bank is closed on Saturday and Sundays, hence withdrawals
+      cannot be facilitated on that day. <br>
+                            3. Limit to one withdrawal per day according to 
+      company policy. <br>
+                            4.Minimum withdrawal is 500 and Maximum withdrawal is 50000.<br>
+                            5.If you encounter any issues, please don't hesitate
+      to reach out to our customer support team for
+      assistance.<br>
+                            6. Kindly allow a processing time of 24 to 48 hours for 
+     withdrawals, as this represents the maximum limit.
                         </p>
                     </div>
                 </section>
@@ -1585,9 +1592,9 @@
 
                             </div>
 
-                            <div class="gap">
+                            {{!-- <div style="display: none" class="gap">
 
-                                <div class="pass_gap">
+                                <div style="display: none;" class="pass_gap">
                                     <h4 style="color: grey;">Two-Factor Authentication (2FA),Choose anyone</h4>
                                     <div class="pI addAccount"
                                         style="display: flex;justify-content: space-between;align-items: center;margin:2vw 0  0 0;height:6.4vh;background: #f9f9f9;width: 92vw;margin-left: 6px; border-radius: 5px;">
@@ -1630,7 +1637,7 @@
 
                                 </div>
 
-                            </div>
+                            </div> --}}
 
                         </div>
                     </section>
@@ -1966,7 +1973,7 @@
                 <p class="accordion-content-description">
                     1. Withdraw from 9:30-18:30 every day.
                     <br>
-                    2. Minimum withdrawal amount Rs.200.
+                    2. Minimum withdrawal amount Rs.500.
                     <br>
 
                     3. 10% handling fee.
@@ -2561,14 +2568,13 @@
 
 
 
-    <section class="announcement">
+    {{!-- <section style="display: none;" class="announcement">
         <div class="textss">
             <img src="/elephantFootball/announcement.png" alt="" srcset="">
 
             <ion-icon name="close-circle-outline" id="close" style="font-size:10vw"></ion-icon>
         </div>
-
-    </section>
+    </section> --}}
 
 
     <!-- ------------------------------------------------------ footer --------------------------------- -->
